@@ -5,33 +5,15 @@
   </h1>
 </div>
 <h2>Here are some links to help you start: </h2>
-<!-- <label class="image-upload-container btn btn-bwm">
-  <span>Select Image</span>
-  <input #imageInput type="file"
-         accept="image/*, .pdf"
-         (change)="passImage(imageInput)">
-</label>
-
-
-<div *ngIf="selectedFile" class="img-preview-container">
-  1
-  <div class="img-preview{{selectedFile.status === 'fail' ? '-error' : ''}}"
-       [ngStyle]="{'background-image': 'url('+ selectedFile.src + ')'}">
-  </div>
-
-  <div *ngIf="selectedFile.pending" class="img-loading-overlay">
-    <div class="img-spinning-circle"></div>
-  </div>
-
-  <div *ngIf="selectedFile.status === 'ok'" class="alert alert-success"> Image Uploaded Succesfuly!</div>
-  <div *ngIf="selectedFile.status === 'fail'" class="alert alert-danger"> Image Upload Failed!</div>
-</div> -->
+<div *ngIf="selectedFile">
+	<img [src]="url" class="rounded mb-3" width="350" alt="">
+</div>
 <div>
-  <input 
-  style="display: none" 
-  type="file" (change)="onFileChanged($event)" 
-  #fileInput>
-  <button (click)="fileInput.click()">Select File</button>
-  <button (click)="onUpload()">Upload!</button>
+  <input type="file" accept="image/*, .pdf"
+  (change)="onFileChanged($event)" #imageInput>
+  <button (click)="imageInput.click()">Select File</button>
+  <div *ngIf="selectedFile">File name: {{ fileName }}, size: {{ fileSize }}</div>
+  <br>
+  <button id="uploadButton" name="uploadButton" (click)="onUpload()">Upload!</button>
 </div>
 <router-outlet></router-outlet>
