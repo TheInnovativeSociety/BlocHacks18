@@ -51,3 +51,23 @@ select {
     margin:0 auto;
     max-width: 800px;
 }
+.tableleft {
+    text-align: left;
+}
+.tablecenter {
+    text-align: center;
+}
+.tableright {
+    text-align: right;
+}
+// table {
+//     display:block;
+//     margin:0 auto;
+//     width: 600px;
+// }
+th {
+    width: 250px !important;
+}
+td {
+    width: 250px !important;
+}
