@@ -9,11 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to Bloc Hacks18!');
-  });
-
-  it('should have submit button', () => {
-    page.navigateTo();
-    expect(page.getUploadButton().getText()).toBe('Upload!');
+    expect(page.getTitleText()).toEqual('Welcome to easy-budget!');
   });
 });
