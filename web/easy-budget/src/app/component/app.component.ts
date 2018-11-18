@@ -19,7 +19,10 @@ export class AppComponent implements OnChanges {
   transportations = ['Public Transportation','Car','Walk'];
   res: any;
 
-  result = [];
+  resultTrans = [];
+  resultHouses = [];
+  resultLiving = [];
+  resultEducation = [];
   constructor(private http: HttpClient) {
 
   }
@@ -47,9 +50,32 @@ export class AppComponent implements OnChanges {
     }
     const resp = this.http.post('http://142.93.146.100/easy-budget.ca/public_html/db_api.php', JSON.stringify(requestData));
     resp.subscribe(res => {
+      if (this.transElem == 'Walk') {
+        this.resultTrans.push(0);
+      } else if (this.transElem == 'Public Transportation') {
+        this.resultTrans.push(res["publicTransport"])
+      } else {
+        this.resultTrans.push(Number(res["carLease"]).toFixed(2));
+        this.resultTrans.push(res["gasoline"]);
+        this.resultTrans.push(res["parking"]);
+        this.resultTrans.push(Number(res["insurance"]).toFixed(2));
+        this.resultTrans.push(res["registration"]);
+        this.resultTrans.push(Number(res["maintenance"]).toFixed(2));
+        this.resultTrans.push(Number(res["tires"]).toFixed(2));
+      }
       console.log(res);
+      this.resultHouses.push(res["rent"]);
+      this.resultHouses.push(res["utilities"]);
+      this.resultHouses.push(res["internet"]);
+      this.resultEducation.push(res["dayCare"]);
+      this.resultEducation.push(res["tuition"]);
+      this.resultLiving.push(res["groceries"]);
+      this.resultLiving.push(res["eatOut"]);     
+      this.resultLiving.push(res["entertainment"]);
+      this.resultLiving.push(res["clothing"]);
+      this.resultLiving.push(res["personalCare"]);
     }, (err) => {
-      console.log(err.error.text);
+      // console.log(err.error.text);
     });
     this.onSubmitted = true;
     // if (this.cityElem == 'Montreal'){

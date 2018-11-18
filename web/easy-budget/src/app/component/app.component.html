@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#main">Me</a>
+      <a class="navbar-brand" href="#main">Easy Budget</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -22,8 +22,8 @@
 <div id="main" class="container-fluid bg-1 text-center">
   <br><br><br><br>
   <h3 class="margin">Easy Budget</h3>
-  <img src="bird.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
-  <h3>Let's a give a try!</h3>
+  <img src="http://worldartsme.com/images/economics-graph-clipart-1.jpg" class="img-responsive img margin" style="display:inline" alt="Bird" width="350" height="350">
+  <h3>Don't budge on your Budget!</h3>
 </div>
 
 <!-- Second Container -->
@@ -67,102 +67,101 @@
 <div [hidden]="!onSubmitted" id="result" class="container-fluid bg-3 text-center">    
   <h3 class="margin">Result</h3><br>
   <table class="table">
-
-       <tr>
-         <th colspan="2">Results</th>
-       </tr>
-
          <tr>
            <th scope="row" class="tableleft">Transportation</th>
-           <td class="tablecenter">Mark</td>
+           <td class="tablecenter"></td>
          </tr>
-         <tr>
+         <tr *ngIf="this.transElem == 'Walk'">
            <th scope="row" class="tableright">Public Transportation</th>
-           <td class="tablecenter">Jacob</td>
+           <td class="tablecenter">{{ resultTrans[0] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableleft">Car</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Public Transportation'">
+           <th scope="row" class="tableright">Public Transportation</th>
+           <td class="tablecenter">{{ resultTrans[0] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableright">Lease</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableLeft">Car</th>
+            <td class="tablecenter"></td>
+          </tr>
+          <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableright">Lease</th>
+           <td class="tablecenter">{{ resultTrans[0] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableright">Gas Consumption</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableright">Gas Consumption</th>
+           <td class="tablecenter">{{ resultTrans[1] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableright">Parking</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableright">Parking</th>
+           <td class="tablecenter">{{ resultTrans[2] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableright">Insurance</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableright">Insurance</th>
+           <td class="tablecenter">{{ resultTrans[3] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableright">Registration</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableright">Registration</th>
+           <td class="tablecenter">{{ resultTrans[4] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableright">Maintnance</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableright">Maintnance</th>
+           <td class="tablecenter">{{ resultTrans[5] }}</td>
          </tr>
-         <tr>
-           <th scope="row" class="tableright">Tires</th>
-           <td class="tablecenter">Larry</td>
+         <tr *ngIf="this.transElem == 'Car'">
+            <th scope="row" class="tableright">Tires</th>
+           <td class="tablecenter">{{ resultTrans[6] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableleft">Housing</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter"></td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Apartment Rent</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultHouses[0] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Utilities</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultHouses[1] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Internet</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultHouses[2] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableleft">Living Expenses</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter"></td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Groceries</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultLiving[0] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Eating Out</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultLiving[1] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Entertainment</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultLiving[2] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Clothing</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultLiving[3] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Personal Care</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultLiving[4] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableleft">Education</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter"></td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Day Care</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultEducation[0] }}</td>
          </tr>
          <tr>
            <th scope="row" class="tableright">Tuition</th>
-           <td class="tablecenter">Larry</td>
+           <td class="tablecenter">{{ resultEducation[1] }}</td>
          </tr>
   </table>
   <button class="btn btn-success" (click)="reset()">Reset</button>
