@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" id="mainNav">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -6,54 +6,73 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Me</a>
+      <a class="navbar-brand" href="#main">Me</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">WHO</a></li>
-        <li><a href="#">WHAT</a></li>
-        <li><a href="#">WHERE</a></li>
+        <li><a href="#main">Main</a></li>
+        <li><a href="#budgetform">Form</a></li>
+        <li><a href="#result">Result</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center">
-  <h3 class="margin">Who Am I?</h3>
+<div id="main" class="container-fluid bg-1 text-center">
+  <br><br><br><br>
+  <h3 class="margin">Easy Budget</h3>
   <img src="bird.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="350" height="350">
-  <h3>I'm an adventurer</h3>
+  <h3>Let's a give a try!</h3>
 </div>
 
 <!-- Second Container -->
-<div class="container-fluid bg-2 text-center">
-  <h3 class="margin">What Am I?</h3>
-  <app-budget-form></app-budget-form>
-  <a href="#" class="btn btn-default btn-lg">
-    <span class="glyphicon glyphicon-search"></span> Search
-  </a>
+<div id="budgetform" class="container-fluid bg-2 text-center">
+  <div class="container">
+    <h1>Budget Form</h1>
+    <form>
+        <div class="form-group">
+            <label for="city">City</label>
+            <select class="form-control" id="cityField" required [(ngModel)]="cityElem" name="cityElem">
+                <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+        <label for="adult">Number of Adult (18+)</label>
+        <input [(ngModel)]="adult" name="adult" type="number" class="form-control" id="adultField" 
+            required #adultForm="ngModel" default=0 />
+        </div>
+        <div class="form-group">
+            <label for="children">Number of Children</label>
+            <input [(ngModel)]="children" name="children" type="number" class="form-control" id="childrenField" 
+                required #childrenForm="ngModel" />
+        </div>
+        <div class="form-group">
+                <label for="student">Number of Student</label>
+                <input [(ngModel)]="student" name="student" type="number" class="form-control" id="studentField" 
+                    required #studentForm="ngModel" />
+        </div>
+        <div class="form-group">
+            <label for="transportation">Transportation </label>
+            <select class="form-control" id="transportationField" required [(ngModel)]="transElem" name="transElem">
+                <option *ngFor="let transportation of transportations" [value]="transportation">{{ transportation }}</option>
+            </select>
+        </div>
+        <button class="btn btn-success" (click)="onSubmit()">Submit</button>
+    </form>
+  </div>
 </div>
 
 <!-- Third Container (Grid) -->
-<div class="container-fluid bg-3 text-center">    
-  <h3 class="margin">Where To Find Me?</h3><br>
-  <div class="row">
-    <div class="col-sm-4">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="birds1.jpg" class="img-responsive margin" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="birds2.jpg" class="img-responsive margin" style="width:100%" alt="Image">
-    </div>
-    <div class="col-sm-4"> 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      <img src="birds3.jpg" class="img-responsive margin" style="width:100%" alt="Image">
-    </div>
-  </div>
+<div [hidden]="!onSubmitted" id="result" class="container-fluid bg-3 text-center">    
+  <h3 class="margin">Result</h3><br>
+  <?php
+  include "database.php";
+  ?>
+  <button class="btn btn-success" (click)="reset()">Reset</button>
 </div>
 
 <!-- Footer -->
 <footer class="container-fluid bg-4 text-center">
-  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p> 
+  <p>Data Innovation Society of Concordia</p> 
 </footer>
